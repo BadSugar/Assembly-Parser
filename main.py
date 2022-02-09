@@ -20,15 +20,14 @@ lexer = lex.lex(module=asmrules, optimize=1, debug=False, outputdir=r"ply_debug/
 
 
 try:
-    fp = open(args.asm_file, "r")
+    with open(args.asm_file, "r") as fp:
+        data = fp.read()
 except FileNotFoundError:
     sys.exit("File Not Found")
 
 # TODO: Check If Label Exist
 #start_label = args.start_label
 
-data = fp.read()
-fp.close()
 
 # Give the lexer input
 lexer.input(data)
