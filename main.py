@@ -5,6 +5,7 @@ import ply.yacc as yacc
 import asmrules
 import asmparser
 import argparse
+import sys
 
 
 tokens = asmrules.tokens
@@ -18,8 +19,14 @@ print("Building the lexer\n")
 lexer = lex.lex(module=asmrules, optimize=1, debug=False, outputdir=r"ply_debug/")
 
 
-fp = open("examples/code.1.s", "r")
-#fp = open(asmfile, "r")
+try:
+    fp = open(args.asm_file, "r")
+except FileNotFoundError:
+    sys.exit("File Not Found")
+
+# TODO: Check If Label Exist
+#start_label = args.start_label
+
 data = fp.read()
 fp.close()
 

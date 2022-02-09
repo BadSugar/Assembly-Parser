@@ -14,7 +14,7 @@ def p_assembly_line(p: yacc.YaccProduction):
 
 def p_jmp(p: yacc.YaccProduction) -> None:
     'jmp : JMP label'
-    print(f"[*] @p_expression_jmp: {jmp} {p[2]}")
+    print(f"[*] @p_expression_jmp: jmp {p[2]}")
     p[0] =  p[1]
 
 def p_mov(p: yacc.YaccProduction) -> None:
